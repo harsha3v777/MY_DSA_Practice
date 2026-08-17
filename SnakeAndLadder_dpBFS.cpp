@@ -24,12 +24,10 @@ public:
             jump[sn[i]] = sn[i + 1];
         }
 
-        // dist[i] = minimum throws needed to reach cell i
         vector<int> dist(N + 1, -1);
 
         queue<int> q;
 
-        // Start from cell 1
         q.push(1);
         dist[1] = 0;
 
@@ -38,24 +36,18 @@ public:
             int curr = q.front();
             q.pop();
 
-            // Reached final cell
-            if (curr == N)
-                return dist[curr];
+            if (curr == N) return dist[curr];
 
-            // Try all possible dice values
             for (int dice = 1; dice <= 6; dice++) {
 
                 int next = curr + dice;
 
-                if (next > N)
-                    continue;
+                if (next > N) continue;
 
-                // If snake/ladder exists, jump
                 if (jump.find(next) != jump.end()) {
                     next = jump[next];
                 }
 
-                // Visit only if not visited before
                 if (dist[next] == -1) {
                     dist[next] = dist[curr] + 1;
                     q.push(next);
