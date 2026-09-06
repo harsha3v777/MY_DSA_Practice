@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+// using binary search - O(log n)
+
 class Solution {
 public:
     int countOccurrences(vector<int>& arr, int target) {
